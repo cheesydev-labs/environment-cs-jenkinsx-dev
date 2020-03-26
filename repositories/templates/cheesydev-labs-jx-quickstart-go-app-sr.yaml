@@ -1,0 +1,21 @@
+apiVersion: jenkins.io/v1
+kind: SourceRepository
+metadata:
+  creationTimestamp: null
+  labels:
+    owner: cheesydev-labs
+    provider: github
+    repository: jx-quickstart-go-app
+  name: cheesydev-labs-jx-quickstart-go-app
+spec:
+  description: Imported application for cheesydev-labs/jx-quickstart-go-app
+  httpCloneURL: https://github.com/cheesydev-labs/jx-quickstart-go-app.git
+  org: cheesydev-labs
+  provider: https://github.com
+  providerKind: github
+  providerName: github
+  repo: jx-quickstart-go-app
+  scheduler:
+    kind: ""
+    name: ""
+  url: https://github.com/cheesydev-labs/jx-quickstart-go-app.git

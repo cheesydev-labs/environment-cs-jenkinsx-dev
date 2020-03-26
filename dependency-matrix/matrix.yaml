@@ -1,0 +1,7 @@
+dependencies:
+- host: github.com
+  owner: cheesydev-labs
+  repo: jx-quickstart-go-app
+  url: https://github.com/cheesydev-labs/jx-quickstart-go-app.git
+  version: ""
+  versionURL: ""
