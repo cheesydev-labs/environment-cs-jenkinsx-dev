@@ -1,35 +1,83 @@
+autoUpdate:
+  enabled: false
+  schedule: ""
+bootConfigURL: https://github.com/jenkins-x/jenkins-x-boot-config.git
 cluster:
-  clusterName: ""
-  environmentGitOwner: ""
-  environmentGitPublic: false
-  project: ""
+  clusterName: cs-jenkinsx
+  devEnvApprovers:
+  - cheesydev
+  - adam-sandor
+  environmentGitOwner: cheesydev-labs
+  environmentGitPublic: true
+  gitKind: github
+  gitName: github
+  gitServer: https://github.com
+  namespace: jx
+  project: rafael-cfa
   provider: gke
-  zone: ""
-gitops: true
+  registry: gcr.io
+  zone: europe-west1-b
 environments:
-- key: dev
-- key: staging
-- key: production
+- ingress:
+    domain: 35.195.23.41.nip.io
+    externalDNS: false
+    namespaceSubDomain: -jx.
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: dev
+  repository: environment-cs-jenkinsx-dev
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: staging
+  repository: environment-cs-jenkinsx-staging
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: production
+  repository: environment-cs-jenkinsx-production
+gitops: true
 ingress:
-  domain: ""
+  domain: 35.195.23.41.nip.io
   externalDNS: false
+  namespaceSubDomain: -jx.
   tls:
     email: ""
     enabled: false
     production: false
 kaniko: true
-secretStorage: local
+repository: nexus
+secretStorage: vault
 storage:
+  backup:
+    enabled: true
+    url: gs://cs-jenkinsx-backup-d4ebe4b4-58d2-42b3-ba8e-2dc2a16b9abc
   logs:
-    enabled: false
-    url: ""
+    enabled: true
+    url: gs://cs-jenkinsx-logs-7ba7638d-493e-47c3-90f4-520f3e970879
   reports:
-    enabled: false
-    url: ""
+    enabled: true
+    url: gs://cs-jenkinsx-reports-95683c31-c67f-4503-8af4-65cec6fab2a
   repository:
-    enabled: false
-    url: ""
+    enabled: true
+    url: gs://cs-jenkinsx-repository-cfedc71d-387c-4937-9cb2-2821676d
+vault: {}
+velero:
+  schedule: ""
+  ttl: ""
 versionStream:
-  ref: "master"
+  ref: v1.0.404
   url: https://github.com/jenkins-x/jenkins-x-versions.git
 webhook: prow
